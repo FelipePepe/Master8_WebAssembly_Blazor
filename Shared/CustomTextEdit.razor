@@ -1,0 +1,24 @@
+﻿@* <input type="text" @attributes="OtherParams" @onchange="@((e) => HandleChange(e.Value.ToString()))"> *@
+<input type="text" @attributes="OtherParams" @bind="searchTerm">
+<button @onclick="HandleClick">Buscar</button>
+<p>@searchTerm</p>
+
+@code {
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IDictionary<string, object> OtherParams { get; set; }
+
+    [Parameter]
+    public EventCallback<string> onSearch { get; set; }
+
+    public string searchTerm;
+
+    protected void HandleClick()
+    {
+        onSearch.InvokeAsync(searchTerm);
+    }
+
+    @* protected void HandleChange(string value)
+        {
+        searchTerm = value;
+        } *@
+}

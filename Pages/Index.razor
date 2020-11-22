@@ -1,0 +1,26 @@
+﻿@page "/"
+
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+
+@* <CustomTextEdit placeholder="Texto 2" disabled="true"/> *@
+<CustomTextEdit placeholder="Texto 2" onSearch="HandleOnSearch" />
+
+<MemberList members=@members />
+
+@code{
+    public List<Member> members = new List<Member>() {
+    new Member() { Id = 1, Login = "john", AvatarUrl = "https://robohash.org/john"},
+    new Member() { Id = 2, Login = "frank", AvatarUrl = "https://robohash.org/frank"},
+    new Member() { Id = 3, Login = "freddy", AvatarUrl = "https://robohash.org/freddy"}
+};
+
+    public void HandleOnSearch(string value)
+    {
+        Console.WriteLine("Event callback " + value);
+    }
+}

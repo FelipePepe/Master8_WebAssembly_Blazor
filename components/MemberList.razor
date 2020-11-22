@@ -1,0 +1,16 @@
+﻿<h3>MemberList</h3>
+
+@foreach (Member member in Members)
+{
+    <div>
+        <img src="@member.AvatarUrl" />
+        <span>@member.Id</span>
+        <span>@member.Login</span>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public List<Member> Members {get; set;}
+   
+}
